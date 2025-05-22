@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZEUS SHOP IOS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0d0d0d;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .login-container, .app-container {
+      background-color: #1a1a1a;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4), 0 0 40px rgba(255, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ff4d4d;
+    }
+
+    select, input[type="password"], input[type="text"] {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border-radius: 8px;
+      border: none;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+
+    .slider {
+      width: 100%;
+      margin-top: 0.5rem;
+      accent-color: #ff1a1a;
+    }
+
+    button {
+      background-color: #5c0000;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #a60000;
+      transform: scale(1.05);
+    }
+
+    .tip {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container" id="login">
+    <h1>ZEUS SHOP IOS</h1>
+    <div class="form-group">
+      <label for="password">กรอกรหัสผ่าน:</label>
+      <input type="password" id="password" placeholder=" " />
+    </div>
+    <button onclick="checkLogin()">เข้าสู่ระบบ</button>
+  </div>
+
+  <div class="app-container" id="app" style="display: none;">
+    <h2>ZEUS SHOP CONFIG</h2>
+
+    <div class="form-group">
+      <label><input type="checkbox" id="aimbot" /> เปิด AimBot</label>
+    </div>
+    <div class="form-group">
+      <label><input type="checkbox" id="aimlock" /> เปิด AimLock</label>
+    </div>
+    <div class="form-group">
+      <label for="aimlock-position">📍 ตำแหน่ง AimLock:</label>
+      <select id="aimlock-position">
+        <option>หัว</option>
+        <option>ตัว</option>
+        <option>ขา</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>🎯 เปอร์เซ็นต์ Headshot: <span id="headshotValue">37%</span></label>
+      <input type="range" min="0" max="100" value="37" class="slider" oninput="document.getElementById('headshotValue').textContent = this.value + '%'" />
+    </div>
+    <div class="form-group">
+      <label><input type="checkbox" id="dpi-check" /> ค่า DPI:</label>
+      <input type="text" placeholder=" " />
+    </div>
+    <div class="form-group">
+      <label for="power-level">🔥 ระดับความดูด:</label>
+      <select id="power-level">
+        <option>ต่ำ</option>
+        <option>กลาง</option>
+        <option>สูง</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label><input type="checkbox" id="autoslide" /> เปิดช่วยลาก</label>
+    </div>
+    <div class="form-group">
+      <label><input type="checkbox" id="antiban" /> เปิดกันแบน</label>
+    </div>
+    <div class="form-group">
+      <label><input type="checkbox" id="antireport" /> เปิดกันรายงาน</label>
+    </div>
+    <div class="form-group">
+      <label><input type="checkbox" id="fastshot" /> เปิดยิงไว</label>
+    </div>
+
+    <button onclick="confirmSettings()">✅ ยืนยันการตั้งค่า</button>
+    <div class="tip">💡 ZEUS SHOP บริการจำหน่ายไฟล์ดูดหัว พาแนลมือถือทุกรุ่น!</div>
+  </div>
+
+  <script>
+    function checkLogin() {
+      const pw = document.getElementById('password').value;
+      if (pw === 'zeus') {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+      } else {
+        alert('รหัสผ่านไม่ถูกต้อง');
+      }
+    }
+
+    function confirmSettings() {
+      alert('✅ การตั้งค่าถูกบันทึกเรียบร้อยแล้ว!');
+    }
+  </script>
+</body>
+</html>
